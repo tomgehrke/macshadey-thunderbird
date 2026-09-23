@@ -1,0 +1,705 @@
+/*
+  =================================================================
+    Macshadey Theme (mts) for Thunderbird
+  =================================================================
+*/
+
+:root {
+  /* Surfaces */
+  --mts-base-background-color:          light-dark(rgb(186 198 214), rgb(22 28 38));
+  --mts-region-background-color:        light-dark(rgb(255 255 255 / 0.4), rgb(255 255 255 / 0.05));
+  --mts-popup-background-color:         light-dark(rgb(186 198 214 / 0.6), rgb(22 28 38 / 0.75));
+  --mts-card-background-color:          light-dark(rgb(255 255 255 / 1),   rgb(255 255 255 / 0.07));
+
+  /* Items */
+  --mts-item-hover-background-color:    light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.08));
+  --mts-item-selected-background-color: light-dark(rgb(255 255 255 / 1),   rgb(255 255 255 / 0.15));
+
+  /* Inputs */
+  --mts-input-background-color:         light-dark(rgb(0 0 0 / 0.1),       rgb(0 0 0 / 0.3));
+  --mts-input-focus-color:              light-dark(rgb(255 255 255 / 0.3), rgb(255 255 255 / 0.1));
+
+  /* Chrome */
+  --mts-scrollbar-color:                light-dark(rgb(128 128 128 / 0.5), rgb(180 190 205 / 0.4));
+
+  /* Accent: same in both */
+  --mts-accent-color:                   rgb(216 108 0);
+  --mts-accent-contrast-color:          rgb(255 255 255);
+
+  /* Text */
+  --mts-read-text-color: light-dark(rgb(45 55 72 / 0.8), rgb(190 200 215 / 0.75));
+
+  /* Radii, spacing, and other geometry */
+  --mts-button-background-color: rgb(255 255 255 / 0.5);
+  --mts-button-focus-color: rgb(255 255 255 / 1);
+  --mts-button-radius: 1rem;
+  --mts-input-radius: 1rem;
+  --mts-item-radius: 1rem;
+  --mts-message-body-margin: 1rem;
+  --mts-message-body-radius: 1rem;
+  --mts-region-gutter: 1.5rem;
+  --mts-region-radius: 1.5rem;
+  --mts-region-spacing: 0.5rem;
+  --mts-splitter-width: 5px;
+  --mts-tab-bar-padding: 1rem;
+
+  /* =================================================================
+  Thunderbird Overrides
+  ================================================================= */
+
+  --color-background: var(--mts-base-background-color) !important;
+  --color-surface: var(--mts-base-background-color) !important;
+  --color-surface-container: var(--mts-base-background-color) !important;
+  --layout-background-color: var(--mts-base-background-color) !important;
+  --layout-background-color-secondary: var(--mts-base-background-color) !important;
+  --layout-background-color-tertiary: var(--mts-base-background-color) !important;
+  --message-header-background: transparent !important;
+  --message-header-background-color: transparent !important;
+  --sidebar-background: transparent !important;
+  --sidebar-background-color: transparent !important;
+
+  /* [NEW] Token-level kills, cheaper than selector lists */
+  --splitter-color: transparent !important;
+  --tree-card-background: transparent !important;
+}
+
+#messengerWindow,
+window,
+:root {
+  background-color: var(--mts-base-background-color) !important;
+}
+
+:root[windowsmica="false"],
+:root:not([windowsmica="true"]),
+window#messengerWindow[windowsmica="false"],
+window#messengerWindow:not([windowsmica="true"]) {
+  background-color: var(--mts-base-background-color) !important;
+}
+
+:root[windowsmica="true"],
+window#messengerWindow[windowsmica="true"] {
+  background-color: transparent !important;
+}
+
+#folderPaneBox,
+#folderPaneBox::before,
+#folderPaneBox::after,
+#folderPane,
+#folderTree,
+#mail-toolbox {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+/* Target all message pane internal layers to ensure transparency */
+
+.message-header-container,
+#calendar-panel,
+#calendar-view-box,
+#calendarContent,
+#calendarDisplayBox,
+#calSidebar,
+#chatPanel,
+#contentTab,
+#contentTabWrapper0,
+#contextPane,
+#folderPane,
+#folderPaneHeader,
+#folderPaneHeaderBar,
+#glodaTab,
+#listPaneBox,
+#messageHeader,
+#messagepanebox,
+#messagePaneBox,
+#messagepaneboxwrapper,
+#messengerBody,
+#msgHeaderView,
+#navigation-toolbox,
+#preferencesTab,
+#singleMessage,
+#spacesToolbar,
+#status-bar,
+#tabmail-arrowscrollbox,
+#tabmail-tabbox,
+#tabmail-tabs,
+#tabmail,
+#tabpanelcontainer,
+#tabs-toolbar,
+#threadPane,
+#threadPaneHeader,
+#threadPaneHeaderBar,
+#threadTree,
+#titlebar,
+#today-pane-panel,
+#unifiedToolbar,
+browser#messageBrowser,
+browser#messagepane,
+message-header
+{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Assign the semi-transparent region color */
+
+#calSidebar,
+#calendarDisplayBox,
+#today-pane-panel,
+#messagePane,
+#threadPane {
+  border-radius: var(--mts-region-radius) !important;
+  background-color: var(--mts-region-background-color) !important;
+  margin: 0 var(--mts-region-spacing) !important;
+}
+
+#datevalue-label {
+  margin-right: 1rem !important;
+}
+
+#messagepaneboxwrapper {
+  background-color: var(--mts-region-background-color) !important;
+}
+
+#messagePaneBox,
+#messagepanebox,
+#messagepaneboxwrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+browser#messageBrowser {
+  border-radius: var(--mts-message-body-radius) !important;
+  margin: var(--mts-message-body-margin) !important;
+}
+
+browser#messagepane {
+  border-radius: var(--mts-message-body-radius) !important;
+  overflow: clip !important;
+}
+
+#messageHeader.icons-beside-text,
+#messageHeader.icons-only,
+#messageHeader.icons-above-text,
+.icons-beside-text,
+.icons-only,
+.icons-above-text {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+browser#messagepane {
+  border-top-color: transparent !important;
+}
+
+#mail-notification-top:empty {
+  border-block-end: none !important;
+}
+
+#calSidebar,
+#calendarDisplayBox,
+#today-pane-panel {
+  padding: 0 var(--mts-region-gutter) !important;
+}
+
+#threadPane {
+  padding-left: var(--mts-region-gutter) !important;
+}
+
+#tabmail-tabs {
+  padding: var(--mts-tab-bar-padding) 0 !important;
+}
+
+unified-toolbar,
+#unifiedToolbarContainer,
+#toolbar-menubar,
+#navigation-toolbox::before,
+#navigation-toolbox::after,
+#unifiedToolbar::before,
+#unifiedToolbar::after,
+#tabs-toolbar::before,
+#tabs-toolbar::after {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background-image: none !important;
+}
+
+/* [NEW] Folder-mode section dividers (the line above "Favorite Folders").
+   Selectors unverified — inspect if the line survives. */
+
+#folderPane .mode-container,
+#folderPane .mode-name,
+#folderPane [is="folder-mode-container"],
+#folderPane .mode-container::before,
+#folderPane .mode-container::after {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Splitters
+   [CHANGED] --splitter-color above should handle the lines; this block
+   remains for splitters that paint a background instead of a border. */
+
+hr[is="pane-splitter"],
+hr[is="pane-splitter"]::before,
+hr[is="pane-splitter"]::after,
+splitter,
+#folderPaneSplitter,
+#messagePaneSplitter,
+#today-splitter,
+#calsidebar_splitter {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#messagePaneSplitter {
+  width: var(--mts-splitter-width) !important;
+}
+
+/* Scrollbars */
+
+#folderPane,
+#threadTree,
+#messagepane,
+#messageBrowser,
+browser[type="content-primary"],
+.mail-toolbox + * browser {
+  scrollbar-width: thick !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.2s ease !important;
+}
+
+#folderPane:hover,
+#threadTree:hover,
+#messagepane:hover,
+#messageBrowser:hover,
+browser[type="content-primary"]:hover {
+  scrollbar-color: var(--mts-scrollbar-color) transparent !important;
+}
+
+#today-pane-panel,
+#agenda,
+#todo-tab-panel,
+#calendar-list {
+  scrollbar-width: thin !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.2s ease !important;
+}
+
+#today-pane-panel:hover,
+#agenda:hover,
+#todo-tab-panel:hover,
+#calendar-list:hover {
+  scrollbar-color: var(--mts-scrollbar-color) transparent !important;
+}
+
+#status-bar {
+  margin: 0.5rem 0 !important;
+}
+
+/* [NEW] Keyboard shortcut chips in the search bar */
+
+.kbd-container {
+  display: none !important;
+}
+
+/* 
+  =================================================================
+  Spaces toolbar
+  =================================================================
+*/
+
+#spacesToolbar .spaces-toolbar-button {
+  background-color: transparent !important;
+  transition: background-color 0.2s ease !important;
+}
+
+#spacesToolbar .spaces-toolbar-button:hover {
+  background-color: var(--mts-item-hover-background-color) !important;
+}
+
+#spacesToolbar .spaces-toolbar-button.current {
+  background-color: var(--mts-item-selected-background-color) !important;
+  color: var(--layout-color-1, currentColor) !important;
+}
+
+#spacesToolbar .spaces-toolbar-button.current img {
+  stroke: currentColor !important;
+}
+
+/* 
+  =================================================================
+  Calendar sidebar + Today pane: strip everything but events
+  -----------------------------------------------------------------
+  :where() gives this rule ZERO specificity, so every other rule
+  in this file (inputs, selected states) still wins over it.
+
+  [CHANGED] The exclusion now keys on the inline calendar-color
+  custom property rather than on .agenda-listitem, so date headers
+  and the bands behind timed events lose their grey while colored
+  event boxes keep their fill. Variable name is a guess — see notes.
+  =================================================================
+*/
+
+:where(#calSidebar, #today-pane-panel)
+  :where(*:not(
+    [style*="--item-backcolor"], [style*="--item-backcolor"] *,
+    [style*="--item-color"], [style*="--item-color"] *,
+    .calendar-color,                         /* calendar list dots  */
+    [selected], [today],                     /* minimonth markers   */
+    #sidePanelNewEvent, #sidePanelNewEvent * /* blue New Event btn  */
+  )) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#agenda .agenda-date-header,
+#agenda .agenda-date-header::before,
+#agenda .agenda-date-header::after {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Put back a selection indicator for the calendar list */
+#calendar-list > li.selected {
+  background-color: var(--mts-item-selected-background-color) !important;
+  border-radius: var(--mts-item-radius) !important;
+}
+
+#todo-tab-panel {
+  background-color: var(--mts-card-background-color) !important;
+  border-radius: var(--mts-message-body-radius) !important;
+  margin-bottom: var(--mts-message-body-margin) !important;
+  padding: 0.5rem !important;
+  overflow: clip !important;
+}
+
+/* 
+  =================================================================
+  Inputs and Buttons
+  =================================================================
+*/
+
+/* Inputs and Search Boxes  [CHANGED] added global-search-bar */
+input,
+textbox,
+search-textbox,
+global-search-bar,
+.search-box,
+.input-container,
+.text-input,
+#quickFilterSearch {
+  background-color: var(--mts-input-background-color) !important;
+  border-radius: var(--mts-input-radius) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+input:hover,
+input:focus,
+input:focus-within,
+textbox:hover,
+textbox:focus,
+textbox:focus-within,
+search-textbox:hover,
+search-textbox:focus,
+search-textbox:focus-within,
+global-search-bar:hover,
+global-search-bar:focus-within,
+.search-box:hover,
+.search-box:focus-within,
+.input-container:hover,
+.input-container:focus-within,
+.text-input:hover,
+.text-input:focus,
+#quickFilterSearch:hover,
+#quickFilterSearch:focus,
+#quickFilterSearch:focus-within {
+  background-color: var(--mts-input-focus-color) !important;
+}
+
+/* 
+  =================================================================
+  Selected Items (Tabs)
+  =================================================================
+*/
+
+/* [CHANGED] Inner tab layers cleared so only the outer fill shows.
+   Merged with the old duplicate box-shadow block below it. */
+.tabmail-tab .tab-stack,
+.tabmail-tab .tab-background,
+.tabmail-tab .tab-content,
+.tabmail-tab:hover .tab-background,
+.tabmail-tab[selected] .tab-background {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.tabmail-tab,
+#folderTree li > .container {
+  border-radius: var(--mts-item-radius) !important;
+  margin-right: 0.5rem !important;
+}
+
+.tabmail-tab {
+  background-color: transparent !important;
+  border-top-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.tabmail-tab[selected] {
+  background-color: var(--mts-item-selected-background-color) !important;
+}
+
+.tabmail-tab:hover,
+.tabmail-tab:focus,
+.tabmail-tab[selected]:hover,
+.tabmail-tab[selected]:focus {
+  background-color: var(--mts-item-hover-background-color) !important;
+}
+
+/* [CHANGED] zero-height instead of display:none, so the tab's
+   internal layout doesn't shift */
+.tabmail-tab .tab-line,
+.tabmail-tab::before,
+.tabmail-tab::after,
+.tabmail-tab .tab-stack::before,
+.tabmail-tab .tab-stack::after {
+  display: none !important;
+}
+
+/* [NEW] stray stroke on tab favicons */
+.tab-icon-image {
+  stroke: transparent !important;
+}
+
+/* 
+  =================================================================
+  Selected Items (Folders)
+  =================================================================
+*/
+
+#folderTree li > .container {
+  background-color: transparent !important;
+}
+
+#folderTree li.selected > .container {
+  background-color: var(--mts-item-selected-background-color) !important;
+}
+
+#folderTree li > .container:focus,
+#folderTree li > .container:hover {
+  background-color: var(--mts-item-hover-background-color) !important;
+}
+
+/* 
+  =================================================================
+  Folder count pills
+  -----------------------------------------------------------------
+  Filled = the folder's own unread count.
+  Outlined = collapsed parent showing a rolled-up count.
+  =================================================================
+*/
+
+#folderTree li .container .unread-count {
+  background-color: var(--mts-accent-color) !important;
+  border-color: var(--mts-accent-color) !important;
+  color: var(--mts-accent-contrast-color) !important;
+  min-width: 3rem !important;
+}
+
+#folderTree li .container .unread-count:empty {
+  display: none !important;
+}
+
+#folderTree li.collapsed > .container .unread-count {
+  background-color: transparent !important;
+  border-color: var(--mts-accent-color) !important;
+  color: var(--mts-accent-color) !important;
+  /* If the ring stays grey, it's drawn with a shadow, not a border:
+  box-shadow: inset 0 0 0 1px var(--mts-accent-color) !important; */
+}
+
+#folderTree li:not(.unread):not(:has(> .container > .unread-count:not(:empty))) > .container > .name {
+  color: var(--mts-read-text-color) !important;
+}
+
+/* 
+  =================================================================
+  Selected Items (Messages)
+  =================================================================
+*/
+
+#threadTree table {
+  border-collapse: separate !important;
+  border-spacing: 0 2px !important;
+}
+
+/* The card sits inside the td and was covering the td's highlight */
+#threadTree tbody tr,
+#threadTree tbody tr > td,
+#threadTree .card-container {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#threadTree tbody tr.selected > td {
+  background-color: var(--mts-item-selected-background-color) !important;
+}
+
+#threadTree tbody tr:hover > td {
+  background-color: var(--mts-item-hover-background-color) !important;
+}
+
+#threadTree tbody tr > td:first-child {
+  border-top-left-radius: var(--mts-item-radius) !important;
+  border-bottom-left-radius: var(--mts-item-radius) !important;
+}
+
+#threadTree tbody tr > td:last-child {
+  border-top-right-radius: var(--mts-item-radius) !important;
+  border-bottom-right-radius: var(--mts-item-radius) !important;
+}
+
+.read-status-column img {
+  display: none !important;
+}
+
+#attachmentBar,
+#attachmentList {
+  background-color: transparent !important;
+}
+
+/* 
+  =================================================================
+  [NEW] Card density: close the sender/subject gap
+  -----------------------------------------------------------------
+  Row height is set inline by JS, so tightening these frees space
+  inside a fixed-height row rather than shrinking it. The freed
+  space is then recentered.
+  =================================================================
+*/
+
+#threadTree .card-container {
+  row-gap: 0 !important;
+  padding-block: 0.4rem !important;
+}
+
+#threadTree .sender {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#threadTree .thread-card-row {
+  min-height: 0 !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+
+#threadTree .thread-card-dynamic-row {
+  gap: 0 !important;
+  row-gap: 0 !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+
+#threadTree .thread-card-subject-container {
+  line-height: 1.35 !important;
+}
+
+/* 
+  =================================================================
+  Account Color Indicator (Vertical Strip)
+  =================================================================
+*/
+
+.card-container,
+.card-container > .thread-card-column:not(.read-status-column) {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.thread-card-row {
+  position: static !important;
+}
+
+.thread-card-row, 
+.thread-card-dynamic-row {
+  padding-left: 0.5rem !important;
+}
+
+.thread-card-subject-container {
+  font-size: 1.2rem !important;
+}
+
+.subject {
+  font-stretch: condensed !important;
+  letter-spacing: 0.2px !important;
+  font-weight: 400 !important; 
+  line-height: 1.35 !important;
+}
+
+#threadTree tr[data-properties~="unread"] .subject {
+  font-weight: 600 !important; 
+}
+
+#threadTree tr:not([data-properties~="unread"]) :is(.sender, .subject, .date) {
+  color: var(--mts-read-text-color) !important;
+}
+
+.account-indicator {
+  display: block !important;
+  position: absolute !important;
+  left: -10px !important;
+  top: 10px !important;
+  bottom: 10px !important;
+  height: auto !important; 
+  width: 4px !important;
+  border-radius: 4px !important;
+  z-index: 10 !important;
+}
+
+/* Stacked layouts: add the missing inter-pane gap */
+body.layout-classic #threadPane,
+body.layout-wide #threadPane {
+  margin-bottom: var(--mts-region-spacing) !important;
+}
+
+body.layout-classic #messagePane,
+body.layout-wide #messagePane {
+  margin-top: var(--mts-region-spacing) !important;
+}
+
+/* 
+  =================================================================
+  Context menus
+  =================================================================
+*/
+
+menupopup {
+  --panel-background: var(--mts-popup-background-color) !important;
+}
+
+menupopup::part(content) {
+  background-color: var(--mts-popup-background-color) !important;
+}
+
+menupopup :is(menu, menuitem)[_moz-menuactive]:not([disabled="true"]) {
+  background-color: var(--mts-item-hover-background-color) !important;
+  color: inherit !important;
+}

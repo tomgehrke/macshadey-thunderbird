@@ -1,0 +1,70 @@
+/*
+  =================================================================
+    Macshadey Theme (mts) — content documents
+  =================================================================
+*/
+
+:root {
+  --mts-scrollbar-color: light-dark(rgb(128 128 128 / 0.5), rgb(180 190 205 / 0.4));
+  --mts-page-background-color: light-dark(rgb(255 255 255), rgb(34 40 50));
+}
+
+/* Message bodies: breathing room inside the rounded frame */
+@-moz-document
+  url-prefix("mailbox://"),
+  url-prefix("imap://"),
+  url-prefix("imap-message://"),
+  url-prefix("news://"),
+  url-prefix("news-message://") {
+
+  body {
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* In-app pages: pull onto the palette */
+@-moz-document
+  url-prefix("about:preferences"),
+  url-prefix("about:addons"),
+  url-prefix("about:support"),
+  url-prefix("about:config") {
+
+  :root {
+    --in-content-page-background: var(--mts-page-background-color) !important;
+  }
+
+  html,
+  body {
+    background-color: var(--mts-page-background-color) !important;
+  }
+}
+
+@-moz-document
+  url-prefix("about:preferences"),
+  url-prefix("about:addons") {
+
+  .sticky-container {
+    background-color: var(--mts-page-background-color) !important;
+  }
+
+  .main-search,
+  .main-heading {
+    background: none !important;
+  }
+}
+
+/* Scrollbars: hidden until hover, everywhere */
+html,
+body {
+  scrollbar-width: thick !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.2s ease !important;
+}
+
+html:hover,
+body:hover,
+html:focus-within,
+body:focus-within {
+  scrollbar-color: var(--mts-scrollbar-color) transparent !important;
+}

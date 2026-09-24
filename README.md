@@ -4,11 +4,20 @@ Stylesheets for the Macshadey Thunderbird theme.
 
 ## Screenshots
 
-![Original Dark Mode](images/original-dark.png)
-![Macshadey Dark Mode](images/macshadey-dark.png)
+### Dark Mode
 
-![Original Light Mode](images/original-light.png)
-![Macshadey Light Mode](images/macshadey-light.png)
+| | |
+|:---:|:---:|
+| ![Original dark mode](images/original-dark.png) | ![Macshadey dark mode](images/macshadey-dark.png) |
+| **Original** | **Macshadey** |
+
+
+### Light Mode
+
+| | |
+|:---:|:---:|
+| ![Original light mode](images/original-light.png) | ![Macshadey light mode](images/macshadey-light.png) |
+| **Original** | **Macshadey** |
 
 ## Installation
 

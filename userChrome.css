@@ -86,6 +86,7 @@ window#messengerWindow[windowsmica="true"] {
 #folderPaneBox::after,
 #folderPane,
 #folderTree,
+#folderTree::before,
 #mail-toolbox {
   background-color: transparent !important;
   background-image: none !important;

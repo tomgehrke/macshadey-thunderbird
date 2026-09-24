@@ -81,6 +81,13 @@ window#messengerWindow[windowsmica="true"] {
   background-color: transparent !important;
 }
 
+@media (-moz-platform: linux) {
+  :root[sizemode="normal"] > body {
+    background-color: var(--mts-base-background-color) !important;
+    border-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
+  }
+}
+
 #folderPaneBox,
 #folderPaneBox::before,
 #folderPaneBox::after,
@@ -649,7 +656,6 @@ global-search-bar:focus-within,
 }
 
 .subject {
-  font-stretch: condensed !important;
   letter-spacing: 0.2px !important;
   font-weight: 400 !important; 
   line-height: 1.35 !important;
